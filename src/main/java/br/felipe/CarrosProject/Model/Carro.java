@@ -1,7 +1,18 @@
 package br.felipe.CarrosProject.Model;
 
-public class Carro {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cars")
+public class Carro{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String marca;
 	private String modelo;
 	
@@ -9,10 +20,12 @@ public class Carro {
 		
 	}
 
-	public Carro(String marca, String modelo) {
-		super();
-		this.marca = marca;
-		this.modelo = modelo;
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getMarca() {
@@ -31,10 +44,16 @@ public class Carro {
 		this.modelo = modelo;
 	}
 
+	public Carro(String marca, String modelo) {
+		super();
+		this.marca = marca;
+		this.modelo = modelo;
+	}
+
 	@Override
 	public String toString() {
-		return "[marca=" + marca + ", modelo=" + modelo + "]";
+		return "Carro [id=" + id + ", marca=" + marca + ", modelo=" + modelo + "]";
 	}
 	
-
+	
 }
